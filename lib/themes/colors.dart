@@ -11,7 +11,7 @@ class AppColors {
   static const gGrayLight = Color(0xffbababa);
   static const gGrayLighter = Color(0xffE9E9E9);
   static const gWhiteBad = Color(0xffFAFAFA);
-  static const gWhiteTotal = Color(0xff000000);
+  static const gWhiteTotal = Color(0xffffffff);
   static const gOne = Color(0xff00FF67);
   static const gTwo = Color(0xffFFF500);
   static const gThree = Color(0xffFF7A00);

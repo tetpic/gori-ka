@@ -6,7 +6,7 @@ class GoriLightTheme {
     return ThemeData(
       textTheme: lightTextTheme(),
       brightness: Brightness.light,
-      scaffoldBackgroundColor: AppColors.gBlack,
+      scaffoldBackgroundColor: AppColors.gWhiteTotal,
       dialogTheme: DialogTheme(
           backgroundColor: AppColors.gWhiteTotal,
           titleTextStyle: lightTextTheme().headline1,
@@ -18,8 +18,8 @@ class GoriLightTheme {
 TextTheme lightTextTheme() {
   return const TextTheme(
       displayLarge: TextStyle(
-    color: AppColors.gBlack,
-    fontFamily: 'Lato',
-    fontSize: 40,
-  ));
+          color: AppColors.gBlack,
+          fontFamily: 'Lato',
+          fontSize: 40,
+          fontWeight: FontWeight.w400));
 }

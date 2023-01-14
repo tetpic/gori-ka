@@ -131,7 +131,7 @@ flutter:
           weight: 900
         - asset: fonts/Lato-Italic.ttf
           weight: 400
-        - asset: fonts/MontLatoserrat-Light.ttf
+        - asset: fonts/Lato-Light.ttf
           weight: 300
         - asset: fonts/Lato-LightItalic.ttf
           style: italic
