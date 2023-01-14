@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gorika/themes/light_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,9 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: GoriLightTheme.lightTheme,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -47,9 +46,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
+            Text('You have pushed the button this many times:',
+                style: Theme.of(context).textTheme.displayLarge),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
