@@ -21,5 +21,10 @@ TextTheme lightTextTheme() {
           color: AppColors.gBlack,
           fontFamily: 'Lato',
           fontSize: 40,
+          fontWeight: FontWeight.w400),
+      displaySmall: TextStyle(
+          color: AppColors.gGray,
+          fontFamily: 'Lato',
+          fontSize: 12,
           fontWeight: FontWeight.w400));
 }

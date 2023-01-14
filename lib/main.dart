@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gorika/loading_page/loading_page.dart';
 import 'package:gorika/themes/light_theme.dart';
 
 void main() {
@@ -11,10 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: GoriLightTheme.lightTheme,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+        title: 'Flutter Demo',
+        theme: GoriLightTheme.lightTheme,
+        // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        home: const Scaffold(
+          body: LoadingPage(),
+        ));
   }
 }
 
