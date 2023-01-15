@@ -94,8 +94,8 @@ class Benefits extends StatelessWidget {
                       borderRadius: BorderRadius.circular(22),
                       color: AppColors.gMint,
                     ),
-                    width: 250,
-                    height: 50,
+                    width: 290,
+                    height: 70,
                     child: Center(
                       child: Text('дальше',
                           style: Theme.of(context).textTheme.labelMedium),
@@ -112,8 +112,8 @@ class Benefits extends StatelessWidget {
                       borderRadius: BorderRadius.circular(22),
                       color: AppColors.gGrayLight,
                     ),
-                    width: 250,
-                    height: 50,
+                    width: 290,
+                    height: 70,
                     child: Center(
                       child: Text(
                         'пропустить',

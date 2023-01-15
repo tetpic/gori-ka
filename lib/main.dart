@@ -20,34 +20,33 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: GoriLightTheme.lightTheme,
         // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        debugShowCheckedModeBanner: false,
         home: const Scaffold(
-          body: Benefits(),
+          body: _Starter(),
         ));
   }
 }
 
-// class _Starter extends StatelessWidget {
-//   const _Starter({super.key});
+class _Starter extends StatelessWidget {
+  const _Starter({super.key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     final loadingState = Get.put(LoadingController);
-//     switch (loadingState) {
-//       case false:
-//         return const LoadingPage();
+  @override
+  Widget build(BuildContext context) {
+    final LoadingController controller = Get.put(LoadingController());
+    // ignore: avoid_print
+    print(controller.isLoaded.value);
+    controller.main();
+    return Obx(() =>
+        controller.isLoaded.value ? const LoadingPage() : const Benefits());
 
-//       default:
-//     }
-//     return const LoadingPage();
-
-//     // switch (expression) {
-//     //   case value:
-//     //     break;
-//     //   default:
-//     //     const LoadingPage();
-//     // }
-//   }
-// }
+    // switch (expression) {
+    //   case value:
+    //     break;
+    //   default:
+    //     const LoadingPage();
+    // }
+  }
+}
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
