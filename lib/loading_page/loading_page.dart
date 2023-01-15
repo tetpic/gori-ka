@@ -27,6 +27,7 @@ class LoadingPage extends StatelessWidget {
   }
 }
 
+// TODO(loading page): сделать прогресс бар зависимым от загрузки данных приложения (когда будет готов бэк)
 class _LoadingBar extends StatelessWidget {
   const _LoadingBar({super.key});
 
@@ -35,10 +36,15 @@ class _LoadingBar extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        color: AppColors.gMint,
+        color: AppColors.gWhiteTotal,
       ),
+      clipBehavior: Clip.hardEdge,
       width: 160,
       height: 10,
+      child: const LinearProgressIndicator(
+        backgroundColor: AppColors.gWhiteTotal,
+        valueColor: AlwaysStoppedAnimation<Color>(AppColors.gMint),
+      ),
     );
   }
 }
