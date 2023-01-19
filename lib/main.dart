@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:gorika/loading_page/loading_page.dart';
+import 'package:gorika/registration/registration.dart';
 import 'package:gorika/themes/light_theme.dart';
 
 import 'benefits/benefits.dart';
@@ -37,7 +38,7 @@ class _Starter extends StatelessWidget {
     print(controller.isLoaded.value);
     controller.main();
     return Obx(() =>
-        controller.isLoaded.value ? const LoadingPage() : const Benefits());
+        controller.isLoaded.value ? const LoadingPage() : const Registration());
 
     // switch (expression) {
     //   case value:
