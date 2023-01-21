@@ -27,9 +27,8 @@ class Benefits extends StatelessWidget {
                   style: Theme.of(context).textTheme.headlineMedium),
               IconButton(
                 icon: const Icon(Icons.cancel_outlined, size: 24),
-                onPressed: () {
-                  // ...
-                },
+                onPressed: () => Get.to(const Registration(),
+                    transition: Transition.upToDown),
               ),
             ],
           ),
@@ -91,7 +90,7 @@ class Benefits extends StatelessWidget {
               Column(
                 children: [
                   TextButton(
-                    onPressed: () => Get.off(Registration()),
+                    onPressed: () => Get.off(const Registration()),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(22),
