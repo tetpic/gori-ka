@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:gorika/registration/registration_controller.dart';
 import '../themes/colors.dart';
 
 class Registration extends StatelessWidget {
@@ -6,69 +8,83 @@ class Registration extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const EmailInput(),
-          const SizedBox(
-            height: 20,
-          ),
-          TextButton(
-            onPressed: () => {},
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(22),
-                color: AppColors.gMint,
+    final RegistrationController button = Get.put(RegistrationController());
+
+    return Obx(
+      () => Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const _EmailInput(),
+              const SizedBox(
+                height: 20,
               ),
-              width: 290,
-              height: 70,
-              child: Center(
-                child: Text(
-                  'дальше',
-                  style: Theme.of(context).textTheme.labelMedium,
+              TextButton(
+                onPressed: () => {button.sendEmail()},
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(22),
+                    color: button.isValid.value
+                        ? AppColors.gMint
+                        : AppColors.gDarkGray,
+                  ),
+                  width: 290,
+                  height: 70,
+                  child: Center(
+                    child: Text(
+                      'дальше',
+                      style: Theme.of(context).textTheme.labelMedium,
+                    ),
+                  ),
                 ),
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
 }
 
-class EmailInput extends StatelessWidget {
-  const EmailInput({
+class _EmailInput extends StatelessWidget {
+  const _EmailInput({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: AppColors.gGrayLight,
-      ),
-      child: SizedBox(
-        width: 290,
-        height: 70,
-        child: Center(
-          child: TextField(
-            textAlign: TextAlign.center,
-            textAlignVertical: TextAlignVertical.center,
-            cursorHeight: 25,
-            // strutStyle: const StrutStyle(fontSize: 25),
-            style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                  color: AppColors.gBlack,
-                ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              hintText: 'name@mailbox.com',
-              hintStyle: Theme.of(context)
-                  .textTheme
-                  .labelMedium
-                  ?.copyWith(color: AppColors.gGray),
+    final RegistrationController controller = Get.put(RegistrationController());
+    return Obx(
+      () => Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: controller.inputState.value == 'passive'
+              ? AppColors.gGrayLight
+              : AppColors.gRufous,
+        ),
+        child: SizedBox(
+          width: 290,
+          height: 70,
+          child: Center(
+            child: TextField(
+              onChanged: (text) => {controller.changeInputText(text)},
+              textAlign: TextAlign.center,
+              textAlignVertical: TextAlignVertical.center,
+              cursorHeight: 25,
+              onTap: () => {controller.colorChanger('focused')},
+              style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                    color: AppColors.gBlack,
+                  ),
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: 'name@mailbox.com',
+                hintStyle: Theme.of(context)
+                    .textTheme
+                    .labelMedium
+                    ?.copyWith(color: AppColors.gGray),
+              ),
             ),
           ),
         ),

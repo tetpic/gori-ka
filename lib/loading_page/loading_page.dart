@@ -6,22 +6,25 @@ class LoadingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const _LoadingBar(),
-          const SizedBox(
-            height: 40,
-          ),
-          Image.asset('images/gorilka-logo.png'),
-          Text('Gōri-ka', style: Theme.of(context).textTheme.displayLarge),
-          const SizedBox(
-            height: 180,
-          ),
-          Text('Версия 0.0.2', style: Theme.of(context).textTheme.displaySmall)
-        ],
+    return Scaffold(
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const _LoadingBar(),
+            const SizedBox(
+              height: 40,
+            ),
+            Image.asset('images/gorilka-logo.png'),
+            Text('Gōri-ka', style: Theme.of(context).textTheme.displayLarge),
+            const SizedBox(
+              height: 180,
+            ),
+            Text('Версия 0.0.2',
+                style: Theme.of(context).textTheme.displaySmall)
+          ],
+        ),
       ),
     );
   }
