@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:gorika/authorization/authorization.dart';
+import 'package:gorika/loading_page/main_logo.dart';
 import 'package:gorika/registration/registration_controller.dart';
 import '../themes/colors.dart';
 
@@ -10,22 +12,26 @@ class Registration extends StatelessWidget {
   Widget build(BuildContext context) {
     final RegistrationController button = Get.put(RegistrationController());
 
-    return Obx(
-      () => Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const _EmailInput(),
-              const SizedBox(
-                height: 20,
-              ),
-              TextButton(
-                onPressed: () => {button.sendEmail()},
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const MainLogo(fSize: 20, imgWidth: 90, textBody: 'ID'),
+            const _EmailInput(),
+            const SizedBox(
+              height: 20,
+            ),
+            Obx(
+              () => TextButton(
+                onPressed: () => {
+                  if (button.isValid.value == true)
+                    {Get.to(() => const Authorization())}
+                },
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(22),
+                    borderRadius: BorderRadius.circular(10),
                     color: button.isValid.value
                         ? AppColors.gMint
                         : AppColors.gDarkGray,
@@ -40,8 +46,8 @@ class Registration extends StatelessWidget {
                   ),
                 ),
               ),
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );
@@ -62,7 +68,7 @@ class _EmailInput extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           color: controller.inputState.value == 'passive'
               ? AppColors.gGrayLight
-              : AppColors.gRufous,
+              : AppColors.gWhiteBad,
         ),
         child: SizedBox(
           width: 290,
@@ -79,7 +85,9 @@ class _EmailInput extends StatelessWidget {
                   ),
               decoration: InputDecoration(
                 border: InputBorder.none,
-                hintText: 'name@mailbox.com',
+                hintText: controller.inputValue.value == ''
+                    ? 'name@mailbox.com'
+                    : controller.inputValue.value,
                 hintStyle: Theme.of(context)
                     .textTheme
                     .labelMedium

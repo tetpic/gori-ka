@@ -15,44 +15,70 @@ class Benefits extends StatelessWidget {
     controller.setContent(0);
     var limit = controller.benefitsCounter.value;
     return Scaffold(
-      body: Center(
-          child: (Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: AppColors.gWhiteTotal,
+          title: Column(
             children: [
-              IconButton(
-                icon: const Icon(Icons.arrow_back_rounded, size: 24),
-                onPressed: () {
-                  controller.activeItem.value > 0 &&
-                          controller.activeItem.value < limit
-                      ? controller.prevItem()
-                      : true;
-                },
+              const SizedBox(
+                height: 20,
               ),
-              Obx(
-                () => Text(controller.benefitsContent['subtitle'],
-                    style: Theme.of(context).textTheme.headlineMedium),
-              ),
-              IconButton(
-                icon: const Icon(Icons.cancel_outlined, size: 24),
-                onPressed: () => Get.to(const Registration(),
-                    transition: Transition.upToDown),
+              BenefitsAppBar(controller: controller, limit: limit),
+            ],
+          ),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Column(
+                children: const [
+                  _BenefitsContent(),
+                  _BenefitsButtons(),
+                ],
               ),
             ],
           ),
-          Column(
-            children: const [
-              _BenefitsContent(),
-              SizedBox(
-                height: 15,
-              ),
-              _BenefitsButtons(),
-            ],
-          )
-        ],
-      ))),
+        ));
+  }
+}
+
+class BenefitsAppBar extends StatelessWidget {
+  const BenefitsAppBar({
+    Key? key,
+    required this.controller,
+    required this.limit,
+  }) : super(key: key);
+
+  final BenefitsController controller;
+  final int limit;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        IconButton(
+          icon: const Icon(
+              color: AppColors.gBlack, Icons.arrow_back_rounded, size: 24),
+          onPressed: () {
+            controller.activeItem.value > 0 &&
+                    controller.activeItem.value < limit
+                ? controller.prevItem()
+                : true;
+          },
+        ),
+        Obx(
+          () => Text(controller.benefitsContent['subtitle'],
+              style: Theme.of(context).textTheme.headlineMedium),
+        ),
+        IconButton(
+          icon: const Icon(
+              color: AppColors.gBlack, Icons.cancel_outlined, size: 24),
+          onPressed: () =>
+              Get.to(const Registration(), transition: Transition.upToDown),
+        ),
+      ],
     );
   }
 }
@@ -67,6 +93,7 @@ class _BenefitsContent extends StatelessWidget {
     BenefitsController controller = Get.put(BenefitsController());
     var contentLength = controller.benefitsCounter.value;
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Obx(
           () => Text(

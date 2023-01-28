@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gorika/loading_page/main_logo.dart';
 import 'package:gorika/themes/colors.dart';
 
 class LoadingPage extends StatelessWidget {
@@ -16,8 +17,7 @@ class LoadingPage extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            Image.asset('images/gorilka-logo.png'),
-            Text('Gōri-ka', style: Theme.of(context).textTheme.displayLarge),
+            const MainLogo(fSize: 40, imgWidth: 180, textBody: ''),
             const SizedBox(
               height: 180,
             ),
