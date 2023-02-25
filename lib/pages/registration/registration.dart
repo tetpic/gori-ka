@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gorika/authorization/authorization.dart';
-import 'package:gorika/loading_page/main_logo.dart';
-import 'package:gorika/registration/registration_controller.dart';
-import '../themes/colors.dart';
+import 'package:gorika/pages/authorization/authorization.dart';
+import 'package:gorika/pages/loading_page/main_logo.dart';
+import 'package:gorika/controllers/registration_controller.dart';
+import '../../themes/colors.dart';
 
 class Registration extends StatelessWidget {
   const Registration({super.key});

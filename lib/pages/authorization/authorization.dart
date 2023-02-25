@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gorika/authorization/authorization_controller.dart';
-import 'package:gorika/loading_page/main_logo.dart';
-import 'package:gorika/registration/registration.dart';
+import 'package:gorika/controllers/authorization_controller.dart';
+import 'package:gorika/pages/loading_page/main_logo.dart';
+import 'package:gorika/pages/registration/registration.dart';
 import 'package:gorika/themes/colors.dart';
 
 class Authorization extends StatelessWidget {

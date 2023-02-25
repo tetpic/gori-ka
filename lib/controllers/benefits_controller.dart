@@ -1,4 +1,5 @@
 import 'package:get/state_manager.dart';
+import 'package:hive/hive.dart';
 
 class BenefitsController extends GetxController {
   var isLoaded = false.obs;
@@ -6,6 +7,7 @@ class BenefitsController extends GetxController {
   var benefitsCounter = 0.obs;
   var activeItem = 0.obs;
   var isEnd = false.obs;
+  var activeTheme = 'white'.obs;
 
   void setContent(index) {
     isLoaded.value = true;
@@ -49,5 +51,14 @@ class BenefitsController extends GetxController {
   void prevItem() {
     activeItem.value -= 1;
     setContent(activeItem.value);
+  }
+
+  void changeTheme() async {
+    var themeBox = await Hive.openBox('theme');
+    var theme = themeBox.get('themeName');
+    theme == 'black'
+        ? themeBox.put('themeName', 'white')
+        : themeBox.put('themeName', 'dark');
+    activeTheme.value = theme as String;
   }
 }

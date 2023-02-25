@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gorika/loading_page/main_logo.dart';
+import 'package:gorika/pages/loading_page/main_logo.dart';
 import 'package:gorika/themes/colors.dart';
 
 class LoadingPage extends StatelessWidget {

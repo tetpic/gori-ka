@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gorika/benefits/benefits_controller.dart';
-import 'package:gorika/registration/registration.dart';
+import 'package:gorika/controllers/benefits_controller.dart';
+import 'package:gorika/pages/registration/registration.dart';
 
-import '../themes/colors.dart';
+import '../../themes/colors.dart';
 
 class Benefits extends StatelessWidget {
   const Benefits({super.key});
@@ -149,7 +149,7 @@ class _BenefitsButtons extends StatelessWidget {
     BenefitsController controller = Get.put(BenefitsController());
     var limit = controller.benefitsCounter.value - 1;
 
-    void textButtonHandler() {
+    void textButtonHandler(theme) {
       if (controller.activeItem.value < limit &&
           controller.activeItem.value >= 0) {
         controller.nextItem();
@@ -158,10 +158,17 @@ class _BenefitsButtons extends StatelessWidget {
       }
     }
 
+    void changeTheme() {
+      controller.changeTheme();
+      controller.activeTheme.value == 'white'
+          ? Get.changeThemeMode(ThemeMode.dark)
+          : Get.changeThemeMode(ThemeMode.light);
+    }
+
     return Column(
       children: [
         TextButton(
-          onPressed: () => {textButtonHandler()},
+          onPressed: () => {textButtonHandler(false)},
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(22),
@@ -179,7 +186,7 @@ class _BenefitsButtons extends StatelessWidget {
           height: 15,
         ),
         TextButton(
-          onPressed: () => {},
+          onPressed: () => {changeTheme()},
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(22),
@@ -189,7 +196,7 @@ class _BenefitsButtons extends StatelessWidget {
             height: 70,
             child: Center(
               child: Text(
-                'пропустить',
+                'сменить тему',
                 style: Theme.of(context)
                     .textTheme
                     .labelMedium
