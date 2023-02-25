@@ -47,10 +47,9 @@ class _Starter extends StatelessWidget {
   Widget build(BuildContext context) {
     final LoadingController controller = Get.put(LoadingController());
     controller.changeTheme().then((name) => {
-          if (name == 'dark')
-            {() => Get.changeThemeMode(ThemeMode.dark)}
-          else
-            {() => Get.changeThemeMode(ThemeMode.light)}
+          name == 'dark'
+              ? Get.changeThemeMode(ThemeMode.dark)
+              : Get.changeThemeMode(ThemeMode.light)
         });
 
     // ignore: avoid_print

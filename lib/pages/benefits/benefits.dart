@@ -159,10 +159,11 @@ class _BenefitsButtons extends StatelessWidget {
     }
 
     void changeTheme() {
-      controller.changeTheme();
-      controller.activeTheme.value == 'white'
-          ? Get.changeThemeMode(ThemeMode.dark)
-          : Get.changeThemeMode(ThemeMode.light);
+      controller.changeTheme().then((theme) => {
+            controller.activeTheme.value == 'white'
+                ? Get.changeThemeMode(ThemeMode.dark)
+                : Get.changeThemeMode(ThemeMode.light)
+          });
     }
 
     return Column(

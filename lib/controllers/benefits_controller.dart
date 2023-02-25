@@ -53,12 +53,16 @@ class BenefitsController extends GetxController {
     setContent(activeItem.value);
   }
 
-  void changeTheme() async {
+  Future changeTheme() async {
     var themeBox = await Hive.openBox('theme');
+
     var theme = themeBox.get('themeName');
-    theme == 'black'
+
+    theme == 'dark'
         ? themeBox.put('themeName', 'white')
         : themeBox.put('themeName', 'dark');
+    print("benefits:" + theme);
     activeTheme.value = theme as String;
+    return theme;
   }
 }
